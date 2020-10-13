@@ -7,4 +7,7 @@ import java.util.List;
 public interface AuthorRepository {
 
     List<AuthorDto> getAllAuthors ();
+
+
+    AuthorDto findAuthorByBookTitle(String bootTitle);
 }

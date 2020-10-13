@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,5 +21,11 @@ public class AuthorController {
     public ResponseEntity<List<AuthorDto>> findAuthors() {
         List<AuthorDto> authorDtos = authorService.findAll();
         return ResponseEntity.ok(authorDtos);
+    }
+
+    @RequestMapping(value = "/author/by/book", method = RequestMethod.GET)
+    public ResponseEntity<AuthorDto> findAuthorByBook(@RequestParam String bookTitle) {
+        AuthorDto author = authorService.findAuthorByBookName(bookTitle);
+        return ResponseEntity.ok(author);
     }
 }

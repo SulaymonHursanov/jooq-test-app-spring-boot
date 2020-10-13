@@ -21,4 +21,11 @@ public class AuthorServiceImpl implements AuthorService {
         log.debug("found authors: {}", allAuthors.size());
         return allAuthors;
     }
+
+    @Override
+    public AuthorDto findAuthorByBookName(String bookTitle) {
+        AuthorDto author = authorRepository.findAuthorByBookTitle(bookTitle);
+        log.debug("found author: {}", author);
+        return author;
+    }
 }
